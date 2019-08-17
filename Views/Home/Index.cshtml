@@ -1,0 +1,41 @@
+﻿@using chefsNDishes.Models
+@model List<Chef>
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Chefs</title>
+    </head>
+    <body>
+        <h1>Chefs | <a href="/dishes">Dishes</a></h1>
+        <a href="/new">Add a Chef</a>
+        <h3>Check out our roster of Chefs!</h3>
+        <div class="border"></div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Number of Dishes</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach(Chef chef in Model)
+                    {
+                        <tr>
+                            <td>@chef.FirstName @chef.LastName</td>
+                            <td>@chef.Age()</td>
+                            <td>@chef.CreatedDishes.Count</td>
+                            <td>@chef.CreatedAt</td>
+                            <td>@chef.UpdatedAt</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </body>
+</html>
